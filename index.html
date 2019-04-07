@@ -1,95 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crystal Collector</title>
-
-<style type="text/css">
-.crystal-image {
-    width: 200px;
-    height: 200px;
-}
-</style>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/javascript/game.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
 <body>
-
-    <div class="targetNumber">TargetNumber</div>
-    <div class="wins">Wins</div>
-    <div class="losses">Losses</div>
-    <div class="score">Score</div>
-    <div id="blueCrystal"><img class="crystal-image" src="assets/images/blueCrystal.jpeg"></div>
-    <div id="multiCrystal"><img class="crystal-image" src="assets/images/multiCrystal.jpeg"></div>
-    <div id="pinkCrystal"><img class="crystal-image" src="assets/images/pinkCrystal.jpeg"></div>
-    <div id="purpleCrystal"><img class="crystal-image" src="assets/images/purpleCrystal.jpeg"></div>
- 
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-
-
-var TargetNumber = "";
-var numberChoices = ["blueCrystal", "multiCrystal", "pinkCrystal", "purpleCrystal"];
-var imageCrystal = $("<img>");
-var counter = 0;
-var wins = 0;
-var losses = 0;
-var endGame = false;
-var startGame = true;
-var gameInProgress = false;
-
-
-function startNewGame (){
-    gameinProgress = true;
-    score = 0;
-    wins = 0;
-    losses = 0;
-    renderTargetNumber();
-    resetGameBoard();
-
-function renderTargetNumber() {
-    var targetNumber = Math.floor(Math.random() * (121-19)) + 19;
-}
-console.log(Math.floor(Math.random() * (121-19)) + 19);
-
-//four crystals each with own unique random number between 1-12 (hidden)//  
-//for loop to create numbers associated with crystals for everyNumberOption
-
-$(".crystal-image").on("click", function(){
-
-    
-function crystalNumberGenerator (){
-    for (var i = 0; i <numberChoices.length; i++);
-    var crystalNumber = Math.floor(Math.random() * (13-1)) + 1;
-    crystal-image.attr("data-crystalValue", numberChoices[i]);
-    $(".img").html($(this).attr("data-crystalValue"));
-}
-    
-
-        
-//         imageCrystal.attr("data-crystalValue", 
-//         var crystalValue = ($(this).attr("data-crystalValue"));
-//         crystalValue = parseInt(crystalValue);
-//         counter = counter + crystalValue;
-//         if (counter === TargetNumber) {
-//             alert("You win!");
-//             wins++;
-//             updateWins();
-//         }
-//         else if (counter >= TargetNumber){
-//             alert("You lose!");
-//             losses++;
-//             updateLosses();
-//         }
-    
-
-// // function updateWins() {
-// //     $("#message").hmtl("You won!");
-// //     wins+++;
-
-});
-    
-</script>
+    <div class="wrapper">
+        <div class="container1">
+            <div class="header">Crystals Collector</div>
+        </div>
+        <div class="container2">
+            <h1>Instructions</h1>
+            <p>You will be given a random number at the start of the game.</p>
+            <p>There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your
+                total score.</p>
+            <p>You win the game by matching your total score to random number. You lose the game if your total score
+                goes above the random number.</p>
+            <p>The value of each crystal is hidden from you until you click on it.</p>
+            <p>Each time when the game starts, the game will change the values of each crystal.</p>
+        </div>
+        <div class="container3">
+            <div id="randomNumber">Random Number
+            </div>
+            <div class="winsAndLosses">
+                <div id="wins">Wins: 0
+                </div>
+                <div id="losses">Losses: 0
+                </div>
+            </div>
+        </div>
+        <div class="container4">
+                <div class="crystal-image" id="blueCrystal">
+                    <img src="assets/images/blueCrystal.png">
+                </div>
+                <div class="crystal-image" id="greenCrystal">
+                    <img src="assets/images/greenCrystal.jpeg">
+                </div>
+                <div class="crystal-image" id="purpleCrystal">
+                    <img src="assets/images/purpleCrystal.jpeg">
+                </div>
+                <div class="crystal-image" id="redCrystal">
+                    <img src="assets/images/redCrystal.jpeg">
+                </div>
+        </div>
+        <div class="container5">
+            <div id="YourScore">Your Score: 0</div>
+            <p id="message"></p>
+        </div> 
+    </div>
+      
 </body>
+
 </html>

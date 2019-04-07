@@ -1,0 +1,118 @@
+@media(min-width: 768px){
+    .container1, .container3, .container4, .container5 {
+        display: flex; 
+    }
+    }
+
+    
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    
+    body {
+        /*background-image: url(https://image.shutterstock.com/image-photo/winter-coming-text-scene-background-260nw-543528610.jpg);*/
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: #777777;
+    }
+    
+    .wrapper {
+        min-height: 100%;
+        margin-bottom: -60px;
+        text-align: center;
+        overflow: auto;
+    }
+    
+    .container1 {
+    margin-bottom: 10px;
+    padding: 15px;
+    background: lightcyan;
+    border: 5px, solid, #666666, medium;
+    }
+
+    .header {
+        border: 5px, black, medium;
+        flex: 1;
+        margin: 0 px, 0px, 5px, 0px; 
+        background: lightcyan;
+        text-align: center;
+        font-size: 40px;
+        line-height: 50px;
+        font-style: bold;
+        box-sizing: border-box;
+    }
+    
+    .container2 {
+    padding: 15px;
+    background:beige;
+    border: 5px, solid, #666666, medium;
+    text-align: left;
+    font-size: 18px;
+    line-height: 20px;
+    font-style: bold;
+    }
+
+    .container3 {
+    padding: 15px;
+    background: lime;
+    border: 5px, solid, #666666, medium;
+    }
+    
+    #randomNumber {
+        flex: 2;
+        text-align: left;
+        font-size: 30px;
+        line-height: 32px;
+        font-style: bold;
+    }
+    
+    .winsAndLosses {
+        flex: 1;
+        text-align: center;
+        display: columns;
+        font-size: 30px;
+        line-height: 32px;
+        font-style: bold;
+    }
+    .container4 {
+        padding: 15px;
+        background: lightcyan;
+        border: 5px, solid, #666666, medium;
+    }
+    .container4 {
+        justify-content: space-between;
+        flex-basis: 400px;
+        padding: 5px; 
+    }
+
+    .crystal-image {
+        width: 20px;
+        height: 20px;
+    }
+
+    .container5 {
+        padding: 15px;
+        background: violet;
+        border: 5px, solid, #666666, medium;
+        font-size: 30px;
+        line-height: 32px;
+        font-style: bold;
+    }
+    
+    /*
+    .clearfix ::after {
+        content: " ";
+        clear: both; 
+        display: table;
+    }
+    
+    #container:after {
+        content: "";
+        display: block;
+    }
+    */
+    
+    
+        
