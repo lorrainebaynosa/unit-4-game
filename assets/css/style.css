@@ -80,16 +80,13 @@
         padding: 15px;
         background: lightcyan;
         border: 5px, solid, #666666, medium;
-    }
-    .container4 {
-        justify-content: space-between;
-        flex-basis: 400px;
-        padding: 5px; 
+        justify-content: space-between; 
+        height: 240px;
     }
 
-    .crystal-image {
-        width: 20px;
-        height: 20px;
+    .crystal {
+        width: 50px;
+        height: 50px;
     }
 
     .container5 {
@@ -113,6 +110,7 @@
         display: block;
     }
     */
+    /*I can't seem to change size of my jewels*/
     
     
         
