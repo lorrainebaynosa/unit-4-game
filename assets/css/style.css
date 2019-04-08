@@ -1,5 +1,5 @@
 @media(min-width: 768px){
-    .container1, .container3, .container4, .container5 {
+    .header, .container3, .container4, .container5 {
         display: flex; 
     }
     }
@@ -25,23 +25,17 @@
         overflow: auto;
     }
     
-    .container1 {
-    margin-bottom: 10px;
-    padding: 15px;
-    background: lightcyan;
-    border: 5px, solid, #666666, medium;
-    }
-
     .header {
-        border: 5px, black, medium;
-        flex: 1;
-        margin: 0 px, 0px, 5px, 0px; 
-        background: lightcyan;
-        text-align: center;
-        font-size: 40px;
-        line-height: 50px;
-        font-style: bold;
-        box-sizing: border-box;
+    
+    padding: 15px;
+    background: lightcyan;       
+    margin: 0 px, 0px, 5px, 0px; 
+    background: lightcyan;
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+    font-style: bold;
+    box-sizing: border-box;
     }
     
     .container2 {

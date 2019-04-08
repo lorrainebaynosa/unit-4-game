@@ -9,24 +9,28 @@ function generateRandomNumber(from, to) {
     return Math.floor(Math.random() * (to - from + 1)) + from;
 }
 
+// //function generateRandomCrystalValue(from, to){
+//     return Math.floor(Math.random() * (to - from + 1)) + from;
+// }
+
 function renderRandomNumber(num) {
     $("#randomNumber").text(num);
 }
 
-function renderWins(num) {
-    $("#wins").text(num);
-}
+// function renderWins(num) {
+//     $("#wins").text(num);
+// }
 
-function renderLosses(num) {
-    $("#losses").text(num);
-}
+// function renderLosses(num) {
+//     $("#losses").text(num);
+// }
 
 function renderScore(num) {
     $("#score").text(num);
 }
-function renderMessage(message) {
-    $("#message").text(message);
-}
+// function renderMessage(message) {
+//     $("#message").text(message);
+// }
 
 function startNewGame(num) {
     randomNumber=num;
@@ -45,18 +49,19 @@ function playGame(userInput){
     } else {
         playGame();
     }
+    }
     
-function wins(num){
-    gameInProgress = false;
-    wins++;
-    renderWins();
-    renderMessage("You won. Select a crystal to play again.");
-}
-function losses(num){
-    gameInProgress = false;
-    losses++;
-    renderLosses();
-    renderMessage("You lost. Select a crystal to play again.");
+// function wins(num){
+//     gameInProgress = false;
+//     wins++;
+//     renderWins();
+//     renderMessage("You won. Select a crystal to play again.");
+// }
+// function losses(num){
+//     gameInProgress = false;
+//     losses++;
+//     renderLosses();
+//     renderMessage("You lost. Select a crystal to play again.");
 
 // When game loads, a random number is already generated.   
 randomNumber = generateRandomNumber(19, 120);
@@ -71,16 +76,25 @@ startNewGame(randomNumber);
 function setCrystalValues() {
     for (var i = 0; i < numberOptions.length; i++) {
         var randomCrystalValue = Math.floor(Math.random() * 12) + 1;
+        //generateRandomCrystalValue(1, 12);
         var crystal = $("#" + numberOptions[i]);
         crystal.attr("data-crystalValue", randomCrystalValue);
     }
 }  
+var score = 0;
 
 $(".crystals").on("click", function() {
-    if (gameInProgress) {
-        var crystalValue = $(this).attr("data-crystalValue");
-        playGame(crystalValue);
-    } else {
-        randomNumber = generateRandomNumber(19, 120);
-        startNewGame(randomNumber)
-    }
+    console.log("Crystal being clicked!");
+    var crystalValue = $(this).attr("data-crystalValue");
+    var score = crystalValue + score;
+    console.log(score); 
+    // if (gameInProgress) {
+    //     var crystalValue = $(this).attr("data-crystalValue");
+    //     playGame(crystalValue);
+    // } else {
+    //     randomNumber = generateRandomNumber(19, 120);
+    //     randomCrystalValue = generateRandomCrystalValue(1, 12);
+    //     startNewGame(randomNumber);
+    // }
+   
+});
