@@ -1,115 +1,86 @@
-//var randomNumber = num;
 var numberOptions = ["blueCrystal", "greenCrystal", "purpleCrystal", "redCrystal"];
-//userInput = [];
+var randomNumber = 0;
 var wins = 0;
 var losses = 0;
 var score = 0;
-var gameInProgress = false;
+var gameInProgress = true;
 
-function startGame(){
-    var gameInProgress = true;
-    resetGameBoard();
-    renderRandomNumber();
-    updateRandomNumber();
-    renderCrystal();
-    //userInput=[];
-    wins = 0;
-    losses = 0;
-    score = 0;
+function generateRandomNumber(from, to) {
+    return Math.floor(Math.random() * (to - from + 1)) + from;
 }
-// function playGame(){
-//     renderScore();
-// }
 
-// // Each time when the game starts, the game will change the values of each crystal.
-
-// function resetGame(){
-//     updateMessage("");
-//     updateRandomNumber(num);
-
-
-//     //HOW DO YOU KNOW WHAT TO PUT IN HERE?
-
-// You will be given a random number at the start of the game.
-function renderRandomNumber() {
-    var randomNumber = Math.floor(Math.random() * (121 - 19)) + 19;
-    console.log(randomNumber);
+function renderRandomNumber(num) {
+    $("#randomNumber").text(num);
 }
-//console.log(Math.floor(Math.random() * (121 - 19)) + 19);
 
-// There are four crystals below, each with its own unique random number between 
-//1-12 (hidden). By clicking on a crystal, you will see the crystal's value and 
-//add a specific amount of points to your total score.
-//.attr("dataCrystalValue") allows us to grab value out of the atttibute.
-
-function renderCrystal() {
-    for (var i = 0; i < numberOptions.length; i++);
-    var randomCrystalValue = Math.floor(Math.random() * (13 - 1)) + 1;
-    var crystal = $("<div>");
-    // var crystal = $("<img>");
-    crystal.attr({
-        "class": "crystal",
-        "data-crystalValue": randomCrystalValue
-    });
-    cystal.attr("dataCrystalValue", numberOptions[i]);
-    $(".crystals").append(crystal);
+function renderWins(num) {
+    $("#wins").text(num);
 }
-//click event applies to every single crystal on page. 
 
-//since attributes on HTML elements are strings, convert to integer before adding to score.
+function renderLosses(num) {
+    $("#losses").text(num);
+}
 
-$(".crystal").on("click", function(){
-    console.log($(this));
+function renderScore(num) {
+    $("#score").text(num);
+}
+function renderMessage(message) {
+    $("#message").text(message);
+}
 
-});
-//     var crystalValue = ($(this).attr("dataCrystalValue"));
-//     crystalValue = parseInt(crystalValue);
-//     renderScore();
-// });
-// // You win the game by matching your total score to random number. You lose the game if your total score
-// // goes above the random number.
-// // The value of each crystal is hidden from you until you click on it.
+function startNewGame(num) {
+    randomNumber=num;
+    renderRandomNumber(num); 
+    score = 0;  
+    renderScore(score);
+    setCrystalValues();
+}
 
-
-// function renderScore (){
-//     score = score + crystalValue;
-//     if (score === randomNumber) { 
-//         winner();         
-//     } else if (score > randomNumber){
-//         endGame();
-//     } else {
-//         playGame();
-//     }
-
-// function winner(){
-//     gameinProgress: false;
-//     wins++;
-//     updateWins(wins);
-//     updateMessage("You won!");
-// } 
-// function endGame(){
-//     gameinProgress: false;
-//     losses++;
-//     updateLosses(losses);
-//     updateMessage("You lost!");
-// }
-// function updateWins(num) {
-//     $("#wins").html(num);
+function playGame(userInput){
+    score = score + parseInt(userInput);
+    if (score === randomNumber){
+        wins();
+    } else if (score > randomNumber){
+        losses();
+    } else {
+        playGame();
+    }
     
-// }
-// function updateLosses(num){
-//     $("#losses").htmnl(num);
-// }
+function wins(num){
+    gameInProgress = false;
+    wins++;
+    renderWins();
+    renderMessage("You won. Select a crystal to play again.");
+}
+function losses(num){
+    gameInProgress = false;
+    losses++;
+    renderLosses();
+    renderMessage("You lost. Select a crystal to play again.");
 
-// function updateMessage(msg){
-//     $("#message").html(msg);
-// }
+// When game loads, a random number is already generated.   
+randomNumber = generateRandomNumber(19, 120);
+startNewGame(randomNumber);
 
-// function updateRandomNumber(num){
-//     $("#randomNumber").html(num)
-// }
+//Each of the four crystals will be assigned a random number between 1-12 (hidden). 
+//By clicking on a crystal, you will see the crystal's value and 
+//add a specific amount of points to your total score.
+//jQuery set attirube syntax attr(name, value)
 
-// crystal.attr("src", images/blueCrystal.png)
-// crystal.attr("src", images/greenCrystal.png)
-// crystal.attr("src", images/purpleCrystal.png)
-// crystal.attr("src", images/redCrystal.png)
+
+function setCrystalValues() {
+    for (var i = 0; i < numberOptions.length; i++) {
+        var randomCrystalValue = Math.floor(Math.random() * 12) + 1;
+        var crystal = $("#" + numberOptions[i]);
+        crystal.attr("data-crystalValue", randomCrystalValue);
+    }
+}  
+
+$(".crystals").on("click", function() {
+    if (gameInProgress) {
+        var crystalValue = $(this).attr("data-crystalValue");
+        playGame(crystalValue);
+    } else {
+        randomNumber = generateRandomNumber(19, 120);
+        startNewGame(randomNumber)
+    }
