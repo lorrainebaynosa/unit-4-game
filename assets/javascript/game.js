@@ -3,66 +3,70 @@ var randomNumber = 0;
 var wins = 0;
 var losses = 0;
 var score = 0;
+// var userInput = [];
 var gameInProgress = true;
 
-function generateRandomNumber(from, to) {
-    return Math.floor(Math.random() * (to - from + 1)) + from;
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// //function generateRandomCrystalValue(from, to){
-//     return Math.floor(Math.random() * (to - from + 1)) + from;
-// }
+function generateRandomCrystalValue(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function renderRandomNumber(num) {
     $("#randomNumber").text(num);
 }
 
-// function renderWins(num) {
-//     $("#wins").text(num);
-// }
+function renderWins(num) {
+    $("#wins").text("wins " + num);
+}
 
-// function renderLosses(num) {
-//     $("#losses").text(num);
-// }
+function renderLosses(num) {
+    $("#losses").text("losses " + num);
+}
 
 function renderScore(num) {
-    $("#score").text(num);
+    $("#score").text("score" + num);
 }
-// function renderMessage(message) {
-//     $("#message").text(message);
-// }
 
-function startNewGame(num) {
-    randomNumber=num;
-    renderRandomNumber(num); 
-    score = 0;  
+function renderMessage(message) {
+    $("#message").text(message);
+}
+
+function startNewGame() {
+    randomNumber = generateRandomNumber(19, 120);
+    renderRandomNumber(randomNumber);
+    gameInProgress = true;
+    score = 0;
     renderScore(score);
     setCrystalValues();
+//  renderMessage = "";
 }
 
-function playGame(userInput){
-    score = score + parseInt(userInput);
-    if (score === randomNumber){
-        wins();
-    } else if (score > randomNumber){
-        losses();
-    } else {
-        playGame();
-    }
-    }
-    
-// function wins(num){
-//     gameInProgress = false;
-//     wins++;
-//     renderWins();
-//     renderMessage("You won. Select a crystal to play again.");
-// }
-// function losses(num){
-//     gameInProgress = false;
-//     losses++;
-//     renderLosses();
-//     renderMessage("You lost. Select a crystal to play again.");
+function playGame(userInput) {
+    // score = score + parseInt(userInput)
+    if (score === randomNumber) {
+        winner();
+    } else if (score > randomNumber) {
+        loser();
+    }  
+}
 
+function winner(){
+    gameInProgress = false;
+    wins++;
+    renderWins(wins);
+    startNewGame();
+    renderMessage("You won. Select a crystal to play again.");
+}
+function loser(){
+    gameInProgress = false;
+    losses++;
+    renderLosses(losses);
+    startNewGame();
+    renderMessage("You lost. Select a crystal to play again.");
+}
 // When game loads, a random number is already generated.   
 randomNumber = generateRandomNumber(19, 120);
 startNewGame(randomNumber);
@@ -70,31 +74,31 @@ startNewGame(randomNumber);
 //Each of the four crystals will be assigned a random number between 1-12 (hidden). 
 //By clicking on a crystal, you will see the crystal's value and 
 //add a specific amount of points to your total score.
-//jQuery set attirube syntax attr(name, value)
+//jQuery set attribute syntax attr(name, value)
 
 
 function setCrystalValues() {
     for (var i = 0; i < numberOptions.length; i++) {
-        var randomCrystalValue = Math.floor(Math.random() * 12) + 1;
-        //generateRandomCrystalValue(1, 12);
+        // var randomCrystalValue = Math.floor(Math.random() * 12) + 1;
+        //return Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+        var randomCrystalValue = generateRandomCrystalValue(1, 12);
         var crystal = $("#" + numberOptions[i]);
         crystal.attr("data-crystalValue", randomCrystalValue);
     }
-}  
-var score = 0;
+}
 
-$(".crystals").on("click", function() {
+//Since attributes on HTML elements are strings, convert it to an integer before adding to the score.
+
+$(".crystals").on("click", function () {
     console.log("Crystal being clicked!");
     var crystalValue = $(this).attr("data-crystalValue");
-    var score = crystalValue + score;
-    console.log(score); 
-    // if (gameInProgress) {
-    //     var crystalValue = $(this).attr("data-crystalValue");
-    //     playGame(crystalValue);
-    // } else {
-    //     randomNumber = generateRandomNumber(19, 120);
-    //     randomCrystalValue = generateRandomCrystalValue(1, 12);
-    //     startNewGame(randomNumber);
-    // }
-   
+    crystalValue = parseInt(crystalValue);
+    console.log(crystalValue);
+    score = score + crystalValue;
+    console.log(score);
+    if (gameInProgress) {
+    playGame(score);
+    } else {
+    startNewGame(randomNumber);
+    }
 });
