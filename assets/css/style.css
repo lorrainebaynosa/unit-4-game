@@ -1,17 +1,16 @@
-@media(min-width: 768px){
-    .header, .container3, .container4, .container5 {
+@media(min-width: 768px) {
+    .header, .containerRandomNum, .containerCrystalImages, .containerScore, .containerMessage {
         display: flex; 
     }
     }
 
-    
+
     html, body {
         height: 100%;
         margin: 0;
     }
     
     body {
-        /*background-image: url(https://image.shutterstock.com/image-photo/winter-coming-text-scene-background-260nw-543528610.jpg);*/
         margin: 0;
         padding: 0;
         font-family: Georgia, 'Times New Roman', Times, serif;
@@ -26,7 +25,6 @@
     }
     
     .header {
-    
     padding: 15px;
     background: lightcyan;       
     margin: 0 px, 0px, 5px, 0px; 
@@ -34,22 +32,25 @@
     text-align: center;
     font-size: 40px;
     line-height: 50px;
-    font-style: bold;
+    font-style: bolder;
     box-sizing: border-box;
     }
     
-    .container2 {
+    .containerInstructions {
     padding: 15px;
     background:beige;
     border: 5px, solid, #666666, medium;
     text-align: left;
-    font-size: 18px;
-    line-height: 20px;
-    font-style: bold;
+    font-size: 23px;
+    line-height: 25px;
+    font-style: bolder;
     }
 
-    .container3 {
+    .containerRandomNum {
     padding: 15px;
+    font-size: 30px;
+    line-height: 32px;
+    font-style: bolder;
     background: lime;
     border: 5px, solid, #666666, medium;
     }
@@ -57,9 +58,6 @@
     #randomNumber {
         flex: 2;
         text-align: left;
-        font-size: 30px;
-        line-height: 32px;
-        font-style: bold;
     }
     
     .winsAndLosses {
@@ -68,14 +66,14 @@
         display: columns;
         font-size: 30px;
         line-height: 32px;
-        font-style: bold;
+        font-style: bolder;
     }
-    .container4 {
+    .containerCrystalImages, .containerMessage {
         padding: 15px;
         background: lightcyan;
         border: 5px, solid, #666666, medium;
         justify-content: space-between; 
-        height: 240px;
+        height: 150px;
     }
 
     .crystals {
@@ -87,13 +85,13 @@
         width: 100%; 
     }
 
-    .container5 {
+    .containerScore {
         padding: 15px;
         background: violet;
         border: 5px, solid, #666666, medium;
         font-size: 30px;
         line-height: 32px;
-        font-style: bold;
+        font-style: bolder;
     }
     
     /*
@@ -108,7 +106,7 @@
         display: block;
     }
     */
-    /*I can't seem to change size of my jewels*/
+    
     
     
         

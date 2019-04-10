@@ -19,15 +19,15 @@ function renderRandomNumber(num) {
 }
 
 function renderWins(num) {
-    $("#wins").text("wins " + num);
+    $("#wins").text("Wins: " + num);
 }
 
 function renderLosses(num) {
-    $("#losses").text("losses " + num);
+    $("#losses").text("Losses: " + num);
 }
 
 function renderScore(num) {
-    $("#score").text("score" + num);
+    $("#score").text("Score:" + num);
 }
 
 function renderMessage(message) {
@@ -41,7 +41,7 @@ function startNewGame() {
     score = 0;
     renderScore(score);
     setCrystalValues();
-//  renderMessage = "";
+    renderMessage = "";
 }
 
 function playGame(userInput) {
@@ -90,14 +90,15 @@ function setCrystalValues() {
 //Since attributes on HTML elements are strings, convert it to an integer before adding to the score.
 
 $(".crystals").on("click", function () {
-    console.log("Crystal being clicked!");
+    // console.log("Crystal being clicked!");
     var crystalValue = $(this).attr("data-crystalValue");
     crystalValue = parseInt(crystalValue);
-    console.log(crystalValue);
+    // console.log(crystalValue);
     score = score + crystalValue;
-    console.log(score);
+    // console.log(score);
     if (gameInProgress) {
     playGame(score);
+    renderScore(score);
     } else {
     startNewGame(randomNumber);
     }
