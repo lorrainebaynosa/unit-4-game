@@ -15,7 +15,7 @@ function generateRandomCrystalValue(min, max) {
 }
 
 function renderRandomNumber(num) {
-    $("#randomNumber").text(num);
+    $("#randomNumber").text("Random Number: " + num);
 }
 
 function renderWins(num) {
@@ -31,7 +31,7 @@ function renderScore(num) {
 }
 
 function renderMessage(message) {
-    $("#message").text(message);
+    $("#message").text("Message:" + message);
 }
 
 function startNewGame() {
@@ -41,11 +41,10 @@ function startNewGame() {
     score = 0;
     renderScore(score);
     setCrystalValues();
-    renderMessage = "";
 }
 
 function playGame(userInput) {
-    // score = score + parseInt(userInput)
+    renderMessage("Good luck!");
     if (score === randomNumber) {
         winner();
     } else if (score > randomNumber) {
@@ -57,15 +56,15 @@ function winner(){
     gameInProgress = false;
     wins++;
     renderWins(wins);
-    startNewGame();
     renderMessage("You won. Select a crystal to play again.");
+    startNewGame();
 }
 function loser(){
     gameInProgress = false;
     losses++;
     renderLosses(losses);
-    startNewGame();
     renderMessage("You lost. Select a crystal to play again.");
+    startNewGame();
 }
 // When game loads, a random number is already generated.   
 randomNumber = generateRandomNumber(19, 120);
@@ -90,13 +89,13 @@ function setCrystalValues() {
 //Since attributes on HTML elements are strings, convert it to an integer before adding to the score.
 
 $(".crystals").on("click", function () {
-    // console.log("Crystal being clicked!");
+    console.log("Crystal being clicked!");
     var crystalValue = $(this).attr("data-crystalValue");
     crystalValue = parseInt(crystalValue);
-    // console.log(crystalValue);
+    console.log(crystalValue);
     score = score + crystalValue;
-    // console.log(score);
-    if (gameInProgress) {
+    console.log(score);
+    if (gameInProgress = true) {
     playGame(score);
     renderScore(score);
     } else {

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
 </head>
 
 <body>
@@ -23,45 +23,48 @@
             <p>There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your
                 total score.</p>
             <p>You win the game by matching your total score to the random number.</p>
-            <p>You lose the game if your total score goes above the random number.</p> 
+            <p>You lose the game if your total score goes above the random number.</p>
             <p>The value of each crystal is hidden from you until you click on it.</p>
             <p>Each time when the game starts, the game will change the values of each crystal.</p>
         </div>
-        <div class="containerRandomNum">
-            <div>Random Number:  </div>
-            <div id="randomNumber"> 
+        <div class="containerRandomNumber">
+            <div class="randomNumber">
+                <div id="randomNumber">Random Number:      
+                </div>
             </div>
             <div class="winsAndLosses">
-                <div id="wins">Wins: 0
+                <div id="wins">Wins:  0
                 </div>
-                <div id="losses">Losses: 0
+                <div id="losses">Losses:  0
                 </div>
             </div>
         </div>
         <div class="containerCrystalImages">
-                <div class="crystals" id="blueCrystal">
-                    <img src="assets/images/blueCrystal.png">
-                </div>
-                <div class="crystals" id="greenCrystal">
-                    <img src="assets/images/greenCrystal.jpeg">
-                </div>
-                <div class="crystals" id="purpleCrystal">
-                    <img src="assets/images/purpleCrystal.jpeg">
-                </div>
-                <div class="crystals" id="redCrystal">
-                    <img src="assets/images/redCrystal.jpeg">
-                </div>
+            <div class="crystals" id="blueCrystal">
+                <img src="assets/images/blueCrystal.png" alt="blueCrystal">
+            </div>
+            <div class="crystals" id="greenCrystal">
+                <img src="assets/images/greenCrystal.jpeg" alt="greenCrystal">
+            </div>
+            <div class="crystals" id="purpleCrystal">
+                <img src="assets/images/purpleCrystal.jpeg" alt="purpleCrystal">
+            </div>
+            <div class="crystals" id="redCrystal">
+                <img src="assets/images/redCrystal.jpeg" alt="redCrystal">
+            </div>
         </div>
         <div class="containerScore">
-            <div id="score">Score: 0</div>
-        </div> 
-        <div class="containerMessage"></div>
-            <p id="message"></p>
+            <div id="score">Score:  0
+            </div>
+        </div>
+        <div class="containerMessage">
+            <div id="message">Message:   
+            </div>
         </div>
     </div>
-      
+
 </body>
 
 <script src="assets/javascript/game.js"></script>
+
 </html>
-    
